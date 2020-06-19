@@ -1,0 +1,5 @@
+log/
+node_modules/
+vue-dist/
+vue/node_modules/
+wechat-info.json
