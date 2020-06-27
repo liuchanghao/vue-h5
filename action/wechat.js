@@ -21,12 +21,13 @@ module.exports = {
     },
     //获取微信网页授权地址
     async getOauthUrl(ctx) {
+        const url = wx.oauth.snsUserInfoUrl;
         ctx.body = {
             status: {
                 name: 'SUCCESS',
             },
             info: {
-                url: wx.oauth.snsUserInfoUrl
+                url
             }
         };
     },

@@ -10,7 +10,7 @@ module.exports = {
 			sourceType: ctx.framework.jsToJava('enums', 'WeChat', ctx.order.enums['GAS_MERCHANT_SOURCETYPE']),
 			gid: ctx.framework.getGid(),
 		};
-		const { res } = await ctx.dubbo.service.partnerProvider.findUnique(params);
+		const { res } = await ctx.dubbo.service.partnerProvider.findUnique();
 		ctx.body = res ? res : { errCode: 500, errMsg: 'dubbo数据请求异常' };
 	}
 }

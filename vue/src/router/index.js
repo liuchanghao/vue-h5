@@ -55,6 +55,7 @@ router.beforeEach(async (to, from, next) => {
   await extend.setSessionStorage("BEFORE_LOGIN_URL", to.fullPath); //保存用户进入的url
   const { url } = await http.get('/wxapi/getOauthUrl'); //获取微信网页授权地址
   window.location.href = url;
+  // next();
 });
 
 // router.afterEach((to, from) => {

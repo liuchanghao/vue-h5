@@ -31,14 +31,14 @@ module.exports = async function dubboInit(ctx) {
         let result = null;
         //dubbo接口调用异常
         if (!body.res && body.err) {
-            log.error(body.err);
+            log.error('dubbo接口调用报错', body.err);
         } else {
             result = JSON.stringify( Object.assign(body.res) );
         }
         if (body.res.status.name === 'FAIL') {
-            log.error(`【pid】: ${process.pid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【耗时】: ${endTime - startTime}ms`);
+            log.error(`【pid】: ${process.pid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【dubbo耗时】: ${endTime - startTime}ms`);
         } else {
-            log.info(`【pid】: ${process.pid} 【gid】: ${ctx.methodArgs[0].$.gid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【耗时】: ${endTime - startTime}ms`);
+            log.info(`【pid】: ${process.pid} 【gid】: ${ctx.methodArgs[0].$.gid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【dubbo耗时】: ${endTime - startTime}ms`);
         }
     });
     return dubbo;

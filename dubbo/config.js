@@ -8,5 +8,5 @@ module.exports = {
 			'com.xyb.gas.merchant.api.facade.MerchantService'
 		],
 		version: '1.0'
-	},
+	}
 }

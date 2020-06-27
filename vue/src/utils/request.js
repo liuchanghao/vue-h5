@@ -1,18 +1,14 @@
 import axios from 'axios';
 import { Toast } from 'vant';
-// import store from '@/store';
 
-// create an axios instance
-const service = axios.create({
-    baseURL: '/', // url = base url + request url
-    // withCredentials: true, // send cookies when cross-domain requests
-    timeout: 5000 // request timeout
-});
+axios.defaults.baseURL = '/';
+axios.defaults.timeout = 5000;
 
 // request interceptor
-service.interceptors.request.use(
+axios.interceptors.request.use(
     config => {
         // do something before request is sent
+        config.metadata = { startTime: new Date() };
         return config;
     },
     error => {
@@ -23,7 +19,7 @@ service.interceptors.request.use(
 );
 
 // response interceptor
-service.interceptors.response.use(
+axios.interceptors.response.use(
     /**
      * If you want to get http information such as headers or status
      * Please return  response => response
@@ -35,17 +31,22 @@ service.interceptors.response.use(
      * You can also judge the status by HTTP Status Code
      */
     response => {
-        const res = response.data;
-        return res;
-        // return Promise.reject(new Error(res.message || 'Error'))
+        response.config.metadata.endTime = new Date();
+        const duration = response.config.metadata.endTime - response.config.metadata.startTime;
+        console.log(`【接口地址】:${response.config.url}【请求方式】:${response.config.method}【请求耗时】:${duration}ms`);
+        return response.data;
     },
     error => {
         console.log('err' + error); // for debug
+        //请求超时
+        if(error === undefined || error.code === 'ECONNABORTED') {
+            Toast.fail('服务请求超时');
+        }
         return Promise.reject(error);
+        // return Promise.reject(new Error(res.message || 'Error'))
     }
 );
 
-// export default service;
 const request = (method = 'GET') => (url, data = {}) => {
 	return new Promise((resolve, reject) => {
 		axios({
@@ -60,14 +61,11 @@ const request = (method = 'GET') => (url, data = {}) => {
 			},
 			timeout: 10000
 		}).then((response) => {
-            console.log('---response---', response.data);
-            const res = response.data;
-            // if(res.status.name === 'FAIL') return Promise.reject(new Error(res.message || 'Error'));
-            if(res.status.name === 'FAIL') {
-                Toast.fail(res.message);
-                return reject(res.message);
+            if(response.status.name === 'FAIL') {
+                Toast.fail(response.message);
+                return reject(response.message);
             }
-            resolve(res.info);
+            resolve(response.info);
 		}).catch((error) => {
 			console.log('---http error---', error);
 			reject(error);

@@ -10,7 +10,8 @@ const { port } = require('./config/local');
 const apiUrl = require("./router/index");
 const order = require('./dubbo/order');
 
-const requestMiddleware = require('./middleware/request');//请求入参中间件
+// const { systemLogger } = require('./utils/logger');
+// const requestMiddleware = require('./middleware/request');//请求入参中间件
 
 //实例化koa
 const app = new Koa();
@@ -21,7 +22,7 @@ registerApp();
 async function registerApp() {
     try {
         app.use(bodyParser());
-        app.use(requestMiddleware);//注入请求参数中间件
+        // app.use(requestMiddleware);//注入请求参数中间件
         app.use(apiUrl.routes());
         // koa-router 以中间件的形式注册给 koa
 		// 加载路由中间件
@@ -38,7 +39,8 @@ async function registerApp() {
             verbose: true
         }));
         app.on('error', err => {
-			framework.log.error('系统内部错误~', err);
+            framework.log.error('系统内部错误~', err);
+            // systemLogger.error(err);
 		});
         await registerWebpack();
         app.listen(port);

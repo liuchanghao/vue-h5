@@ -18,7 +18,7 @@ const wechatConfig = async (params = {}) => {
             };
             const wechatObj = new WechatJSSDK(config);
             wechatObj.initialize().then(w => {
-                console.log('success');
+                console.log('wechat jssdk init successfully...');
                 //set up your share info, "w" is the same instance as "wechatObj"
                 resolve(w);
             }).catch(err => {
