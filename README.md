@@ -28,4 +28,9 @@ cnpm i
 ### 启动服务
 npm run dev
 
-http://127.0.0.1:8080/
+
+使用ngrok等端口映射工具将8080端口映射（比如：http://lch.ngrok.xxx.com，此域名必须在微信公众号后台配置好）
+
+### 微信开发者工具（微信浏览器）访问
+
+http://lch.ngrok.xxx.com?appid=xxx (xxx是微信公众号appid)
