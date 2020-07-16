@@ -51,7 +51,7 @@ export default {
   async mounted() {
     console.log('--App---mounted---');
     //微信jssdk配置
-    await this.$wechatConfig();
+    // await this.$wechatConfig();
     //测试自定义分享内容
     // await this.$wechatCustomShare({
     //   title: '测试分享好友标题',
@@ -59,7 +59,7 @@ export default {
     //   link: 'http://lch.ngrok.xinyebang.cn',
     //   imgUrl: 'https://pixiugj.oss-cn-hangzhou.aliyuncs.com/mp_pixiugj/uploads/1504848808346.png',
     // });
-    await this.$store.dispatch('merchant/getMerchantInfoByAppid', { appid: this.appid });
+    // await this.$store.dispatch('merchant/getMerchantInfoByAppid', { appid: this.appid });
   }
 }
 </script>

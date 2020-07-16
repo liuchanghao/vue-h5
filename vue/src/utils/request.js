@@ -61,11 +61,11 @@ const request = (method = 'GET') => (url, data = {}) => {
 			},
 			timeout: 10000
 		}).then((response) => {
-            if(response.status.name === 'FAIL') {
+            if(response.status !== 200) {
                 Toast.fail(response.message);
                 return reject(response.message);
             }
-            resolve(response.info);
+            resolve(response.data);
 		}).catch((error) => {
 			console.log('---http error---', error);
 			reject(error);

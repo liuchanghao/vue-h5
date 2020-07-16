@@ -23,6 +23,7 @@ async function registerApp() {
     try {
         app.use(bodyParser());
         // app.use(requestMiddleware);//注入请求参数中间件
+
         app.use(apiUrl.routes());
         // koa-router 以中间件的形式注册给 koa
 		// 加载路由中间件

@@ -9,9 +9,12 @@ import VantUI from './components/vant';
 import FastClick from 'fastclick';
 import wechat from './utils/wechat';
 
+import errorHandler from './utils/errorHandler';
+
 Vue.use(VantUI);
 Vue.use(extend);
 Vue.use(wechat);
+Vue.use(errorHandler);
 
 //全局注入filter
 Object.keys(filters).forEach(key => {

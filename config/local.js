@@ -10,9 +10,9 @@ module.exports = {
 	env: 'local',
 	//服务端口
 	port: 8080,
-	//dubbo配置
+	//dubbo配置	
 	dubbo_config: {
-		register: '192.168.2.236:2181',//zk注册地址
+		register: '192.168.99.7:2181',//zk注册地址
 		invoke_timeout: 60,//zk超时时间
 	},
 	//微信公众号配置

@@ -4,15 +4,13 @@
 const { java } = require('dubbo2.js');
 const service = ( module.exports = {} );
 
-service.partnerProvider = dubbo =>
+service.userProvider = dubbo =>
 	dubbo.proxyService({
-		dubboInterface: 'com.xyb.gas.merchant.api.facade.MerchantService',
+		dubboInterface: 'com.zmn.ums.dubbo.interfaces.user.UserListRemoteService',
 		version: '1.0',
 		methods: {
-			findUnique : (data) => {
-				return [
-					java.combine('com.xyb.gas.merchant.api.order.QueryMerchantOrder', data),
-				];
+			getUserByKey : (data) => {
+				return [java.Long(data.userId)];
 			}
 		},
 	});
