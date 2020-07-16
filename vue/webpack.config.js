@@ -13,7 +13,8 @@ const resolvePath = inputPath => path.join(__dirname, inputPath);
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 let webpackConfig = {
-    mode: 'development',
+	mode: 'development',
+	// devtool: 'cheap-module-eval-source-map',
 	stats: 'minimal',
 	entry: {
 		app: ["babel-polyfill", resolvePath('./src/main.js')]

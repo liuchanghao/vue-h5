@@ -24,9 +24,15 @@ class ErrorHandler {
         //Vue 异常监控
 		Vue.config.errorHandler = (error, vm, info) => {
             console.log('---vue error handler---', error.message);
+            console.log('---27---', error.stack.toString());
+            console.log('---28---', vm);
+            console.log('---29---', info);
+            console.log('---30---', error.line);
+            console.log('---31---', error.column);
             const reportData = Object.assign({}, {
                 category: 'Vue',
                 msg: error.message,
+                componentName: this.formatComponentName(vm),
             });
             console.log('---31---', reportData);
             this.saveReport(reportData);
@@ -84,7 +90,24 @@ class ErrorHandler {
 		setTimeout(() => {
 			this.asyncReport();
 		}, this.delayTime);
+    }
+    
+    formatComponentName(vm) {
+		if (vm.$root === vm) {
+			return "root";
+		}
+		const name = vm._isVue
+			? (vm.$options && vm.$options.name) ||
+			(vm.$options && vm.$options._componentTag)
+			: vm.name;
+		return (
+			(name ? "component <" + name + ">" : "anonymous component") +
+			(vm._isVue && vm.$options && vm.$options.__file
+				? " at " + (vm.$options && vm.$options.__file)
+				: "")
+		);
 	}
+
 }
 
 export default {
