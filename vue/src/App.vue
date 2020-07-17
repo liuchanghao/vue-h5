@@ -2,10 +2,10 @@
   <div id="app">
     <router-view/>
     <van-tabbar route active-color="#07c160" inactive-color="#000">
-      <van-tabbar-item replace :to="{name:'Home',query:{appid: this.appid}}" icon="home-o">
+      <van-tabbar-item replace :to="{name:'Home'}" icon="home-o">
         首页
       </van-tabbar-item>
-      <van-tabbar-item replace :to="{name:'About',query:{appid: this.appid}}" icon="search">
+      <van-tabbar-item replace :to="{name:'About'}" icon="search">
         关于
       </van-tabbar-item>
     </van-tabbar>
@@ -59,7 +59,8 @@ export default {
     //   link: 'http://lch.ngrok.xinyebang.cn',
     //   imgUrl: 'https://pixiugj.oss-cn-hangzhou.aliyuncs.com/mp_pixiugj/uploads/1504848808346.png',
     // });
-    // await this.$store.dispatch('merchant/getMerchantInfoByAppid', { appid: this.appid });
+    const result = await this.$store.dispatch('user/getUserByKey', { userId: '10000008' });
+    console.log(result1);
   }
 }
 </script>

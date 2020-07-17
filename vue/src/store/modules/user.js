@@ -1,24 +1,19 @@
 import { getUserByKey } from '@/api/user';
 
 const state = {
-    // merchantInfo: {}
+    userDetail: {}
 }
 
 const mutations = {
-    // GET_MERCHANT_BY_APPID: (state, data) => {
-    //     state.merchantInfo = data
-    // }
+    GET_USER_DETAIL: (state, data) => {
+        state.userDetail = data;
+    }
 }
 
 const actions = {
-    // getMerchantInfoByAppid: async({ commit }, params) => {
-    //     const result = await getMerchantInfoByAppid(params);
-    //     commit('GET_MERCHANT_BY_APPID', result);
-    //     return result;
-    // },
     getUserByKey: async({ commit }, params) => {
         const result = await getUserByKey(params);
-        // commit('GET_MERCHANT_BY_APPID', result);
+        commit('GET_USER_DETAIL', result);
         return result;
     }
 }

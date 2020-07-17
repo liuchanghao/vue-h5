@@ -6,8 +6,7 @@ const { log } = require('../utils/framework');
 
 //初始化dubbo配置
 module.exports = async function dubboInit(ctx) {
-    const dubboSetting = setting
-    .match(service_info_gas.list, { version: service_info_gas.version });
+    const dubboSetting = setting.match(service_info_gas.list, { version: service_info_gas.version });
     const dubbo = new Dubbo({
         application: { name: app_name },
         register: dubbo_config.register,

@@ -1,15 +1,10 @@
 const router = require('koa-router')();   //引入路由函数
 
-const wechat = require('../action/wechat');//微信action
-const merchant = require('../action/merchant');//商户action
-
+const wechat = require('../action/wechat');//微信
 const user = require('../action/user');//会员
 
 //业务接口相关
-router.get('/api/getMerchantInfoByAppid', merchant.getMerchantInfoByAppid);
-
 router.get('/api/getUserByKey', user.getUserByKey);
-
 router.get('/api/getReportData', user.getReportData);
 
 //微信相关

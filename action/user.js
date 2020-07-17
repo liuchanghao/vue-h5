@@ -14,7 +14,6 @@ module.exports = {
 		const { res } = await ctx.dubbo.service.userProvider.getUserByKey(params);
 		ctx.body = res ? res : ctx.throw(500, 'dubbo响应异常');
 	},
-
 	async getReportData(ctx) {
 		ctx.framework.log.info(ctx.query);
 		ctx.body = {

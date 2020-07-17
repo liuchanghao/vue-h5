@@ -1,4 +1,4 @@
 const getters = {
-    merchantInfo: state => state.merchant.merchantInfo
+    userDetail: state => state.user.userDetail
 }
 export default getters;
