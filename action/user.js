@@ -4,13 +4,15 @@
 module.exports = {
 	async getUserByKey(ctx) {
 		const { userId } = ctx.query;
-		if (!userId) return ctx.body = { errCode: 224, errMsg: '缺少参数userId' };
+		// 412: 参数校验错误；500: 系统内部错误
+		if (!userId) ctx.throw(412, '缺少参数userId');
 		const params = {
+			// userId: ctx.framework.jsToJava('long', ctx.framework.paramsTrim(userId)),
 			userId: ctx.framework.paramsTrim(userId),
 			gid: ctx.framework.getGid(),
 		};
 		const { res } = await ctx.dubbo.service.userProvider.getUserByKey(params);
-		ctx.body = res ? res : { errCode: 500, errMsg: 'dubbo数据请求异常' };
+		ctx.body = res ? res : ctx.throw(500, 'dubbo响应异常');
 	},
 
 	async getReportData(ctx) {

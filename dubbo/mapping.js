@@ -4,7 +4,9 @@ const jsToJava = require('js-to-java');
  * js-to-java业务参数转换
 */
 module.exports = {
-    // java.lang.Long
+    long: (value) => {
+        return jsToJava.revert({ $class: 'java.lang.Long', $: value });
+    },
     enums: (className, value) => {
         return jsToJava.enum(className, value);
     },

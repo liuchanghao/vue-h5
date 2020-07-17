@@ -13,6 +13,7 @@
   "dependencies": {
     "dubbo2.js": "^2.3.9",
     "koa": "^2.12.0",
+    "koa-json-error": "^3.1.2",
     "vue": "^2.6.11",
     "vue-router": "^3.3.2",
     "vuex": "^3.4.0",

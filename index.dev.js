@@ -9,6 +9,7 @@ const framework = require('./utils/framework');
 const { port } = require('./config/local');
 const apiUrl = require("./router/index");
 const order = require('./dubbo/order');
+const error = require('koa-json-error');
 
 // const { systemLogger } = require('./utils/logger');
 // const requestMiddleware = require('./middleware/request');//请求入参中间件
@@ -22,8 +23,11 @@ registerApp();
 async function registerApp() {
     try {
         app.use(bodyParser());
+        // json格式化错误异常数据
+        app.use(error({
+            postFormat: (e, { stack, ...rest }) => process.env.NODE_ENV === 'production' ? rest : { ...rest }
+        }));
         // app.use(requestMiddleware);//注入请求参数中间件
-
         app.use(apiUrl.routes());
         // koa-router 以中间件的形式注册给 koa
 		// 加载路由中间件

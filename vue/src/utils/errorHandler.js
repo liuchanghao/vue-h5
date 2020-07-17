@@ -17,7 +17,7 @@ class ErrorHandler {
 		this.delayTime = 3000;//延时上报Error时间
         this.reqDataList = [];//待发送的数据
         this.init();
-        this.asyncReport();
+        // this.asyncReport();
     }
 
     init() {
@@ -35,7 +35,7 @@ class ErrorHandler {
                 componentName: this.formatComponentName(vm),
             });
             console.log('---31---', reportData);
-            this.saveReport(reportData);
+            // this.saveReport(reportData);
 		};
         /**
 		 * 监控资源加载错误(img,script,css,以及jsonp)

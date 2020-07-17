@@ -35,7 +35,7 @@ module.exports = async function dubboInit(ctx) {
         } else {
             result = JSON.stringify( Object.assign(body.res) );
         }
-        if (body.res.status.name === 'FAIL') {
+        if (body.res.status !== 200) {
             log.error(`【pid】: ${process.pid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【dubbo耗时】: ${endTime - startTime}ms`);
         } else {
             log.info(`【pid】: ${process.pid} 【gid】: ${ctx.methodArgs[0].$.gid} 【请求服务】: ${methodName} 【请求入参】: ${JSON.stringify(params)} 【请求出参】: ${result} 【dubbo耗时】: ${endTime - startTime}ms`);
