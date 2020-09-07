@@ -14,7 +14,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 let webpackConfig = {
 	mode: 'development',
-	// devtool: 'cheap-module-eval-source-map',
+	devtool: 'source-map', // 生产环境开启sourcemap，便于浏览器定位具体错误的位置
 	stats: 'minimal',
 	entry: {
 		app: ["babel-polyfill", resolvePath('./src/main.js')]

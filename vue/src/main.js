@@ -9,27 +9,29 @@ import VantUI from './components/vant';
 import FastClick from 'fastclick';
 import wechat from './utils/wechat';
 
-import errorHandler from './utils/errorHandler';
+import zmnUedReport from 'zmn-ued-report';
 
 Vue.use(VantUI);
 Vue.use(extend);
 Vue.use(wechat);
-Vue.use(errorHandler);
+Vue.use(zmnUedReport, {
+    key: '123456',
+});
 
 //全局注入filter
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key]);
+    Vue.filter(key, filters[key]);
 });
 
 //解决移动端300毫秒延迟
-document.addEventListener('DOMContentLoaded', function () {
-	FastClick.attach(document.body);
+document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
 }, false);
 
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
