@@ -6,11 +6,10 @@ const service = (module.exports = {});
 
 service.userProvider = dubbo =>
     dubbo.proxyService({
-        dubboInterface: 'this is dubbo service...', // 完整的包路径
+        dubboInterface: 'com.zmn.ums.dubbo.interfaces.user.UserListRemoteService', // 完整的包路径
         version: '1.0',
         methods: {
-            // demo方法
-            demo: (data) => {
+            getUserByKey: (data) => {
                 return [java.Long(data.userId)];
             }
         },

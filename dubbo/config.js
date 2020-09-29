@@ -5,7 +5,7 @@ module.exports = {
     // 服务列表
     service_info_gas: {
         list: [
-            'this is dubbo service...'
+            'com.zmn.ums.dubbo.interfaces.user.UserListRemoteService'
         ],
         version: '1.0'
     }
