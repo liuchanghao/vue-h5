@@ -59,8 +59,8 @@ export default {
     //   link: 'http://lch.ngrok.xinyebang.cn',
     //   imgUrl: 'https://pixiugj.oss-cn-hangzhou.aliyuncs.com/mp_pixiugj/uploads/1504848808346.png',
     // });
-    // const result = await this.$store.dispatch('user/getUserByKey', { userId: '10000008' });
-    // console.log(result3);
+    const result = await this.$store.dispatch('user/getUserByKey', { userId: '10000008' });
+    console.log(result3); // 模拟变量未定义
   }
 }
 </script>

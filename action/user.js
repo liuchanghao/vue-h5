@@ -1,5 +1,5 @@
 /** 
- * 【会员Controller】
+ * 【会员】
  */
 module.exports = {
     async getUserByKey(ctx) {
@@ -14,11 +14,4 @@ module.exports = {
         const { res } = await ctx.dubbo.service.userProvider.getUserByKey(params);
         ctx.body = res ? res : ctx.throw(500, 'dubbo响应异常');
     },
-    async getReportData(ctx) {
-        ctx.framework.log.info(ctx.query);
-        ctx.body = {
-            status: 200,
-            message: '数据上报成功',
-        }
-    }
 }

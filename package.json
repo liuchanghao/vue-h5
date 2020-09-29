@@ -1,7 +1,7 @@
 {
     "name": "vue-h5",
     "version": "1.0.0",
-    "description": "基于koa2+vue全家桶+webpack4构建的一套基于微信公众号的H5应用",
+    "description": "基于koa2+vue全家桶+webpack4构建的一套基于微信公众号的H5单页应用",
     "main": "index.js",
     "scripts": {
         "dev": "nodemon -e js --ignore vue/ index.dev.js",

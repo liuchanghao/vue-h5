@@ -1,12 +1,12 @@
 const { Dubbo, setting } = require('dubbo2.js/es6');
-const { service_info_gas } = require("./config.js");
+const { service_info } = require("./config.js");
 const { app_name, dubbo_config } = require('../config/local');
 const service = require('./service');
 const { log, getGid } = require('../utils/framework');
 
 //初始化dubbo配置
 module.exports = async function dubboInit(ctx) {
-    const dubboSetting = setting.match(service_info_gas.list, { version: service_info_gas.version });
+    const dubboSetting = setting.match(service_info.list, { version: service_info.version });
     const dubbo = new Dubbo({
         application: { name: app_name },
         register: dubbo_config.register,
